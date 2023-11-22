@@ -1,0 +1,14 @@
+.vscode/
+__pycache__/
+build/
+
+*.egg-info/
+*.egg
+.eggs/
+eggs/
+
+*.cprofile
+*.pyc
+
+*.yaml
+*.yml
