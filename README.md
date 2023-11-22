@@ -7,7 +7,7 @@ Add file logging utility.
 ## Installation
 Clone the project into desired folder and `cd` into it:
 ```shell
-git clone git@github.com:gavlab-radiance/log_utils.git
+git clone git@github.com:sturdivant20/log_utils.git
 cd log_utils
 ```
 
