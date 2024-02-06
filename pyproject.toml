@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "log_utils"
+version = "0.0.1"
+description = "simple logging utilities"
+authors = ["Daniel Sturdivant <sturdivant20@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -12,7 +12,7 @@
 #                                                                                                  #
 #==================================================================================================#
 
-from log_utils.logger import Logger
+from log_utils.logger import default_logger
 import time
 
 time_scales = {
@@ -32,8 +32,6 @@ auto_scale_thresholds = [
   (345.6e3, 'hr'), # 4 dy
   (float('inf'), 'dy')]
 
-log = Logger()
-
 def tic(message=None):
   # Show a message and start a timer.
   # Get the current precise time, and optionally show a message on stdout. By
@@ -46,7 +44,7 @@ def tic(message=None):
   #   output of time.perf_counter()
   #
   if message:
-    log.Info(message)
+    default_logger.Info(message)
   return time.perf_counter()
 
 def toc(t0, message='done.', unit='auto', precision=1):
@@ -81,5 +79,5 @@ def toc(t0, message='done.', unit='auto', precision=1):
       print("Auto time scaling failed. Defaulting to 's'.")
       scale = 1.0
   dt = scale*dt_s
-  log.Info(f"{message} {dt:.{precision}f} {unit}")
+  default_logger.Info(f"{message} {dt:.{precision}f} {unit}")
   return dt, unit

@@ -66,3 +66,6 @@ class Logger:
 
   def __TimeStamp(self):
     return datetime.datetime.now().strftime('%F %T.%f')[:-3]
+
+
+default_logger = Logger()
