@@ -1,2 +1,2 @@
-from log_utils.logger import *
-from log_utils.timer import *
+from .logger import *
+from .timer import *

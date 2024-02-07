@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "log_utils"
+name = "log-utils"
 version = "0.0.1"
 description = "simple logging utilities"
 authors = ["Daniel Sturdivant <sturdivant20@gmail.com>"]
