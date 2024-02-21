@@ -12,25 +12,39 @@
 #                                                                                                  #
 #==================================================================================================#
 
-import datetime
-from enum import Enum
+from datetime import datetime
+# from enum import Enum
+from dataclasses import dataclass, fields
 
-class LogLevel(Enum):
-  Trace = 0
-  Debug = 1
-  Info = 2
-  Warn = 3
-  Error = 4
+# class LogLevel(Enum):
+@dataclass
+class LogLevel:
+  Trace: int = 0
+  Debug: int = 1
+  Info: int = 2
+  Warn: int = 3
+  Error: int = 4
 
-class Color(Enum):
-  Bold = "\u001b[1m"
-  Reset = "\u001b[0m"
-  White = "\u001b[37m"
-  Trace = "\u001b[35m"  # magenta
-  Debug = "\u001b[36m"  # cyan
-  Info = "\u001b[32m"   # green
-  Warn = "\u001b[33m"   # yellow
-  Error = "\u001b[31m"  # red
+# class Color(Enum):
+@dataclass
+class Color:
+  Trace: str = "\u001b[35m"  # magenta
+  Debug: str = "\u001b[36m"  # cyan
+  Info: str = "\u001b[32m"   # green
+  Warn: str = "\u001b[33m"   # yellow
+  Error: str = "\u001b[31m"  # red
+  Bold: str = "\u001b[1m"
+  Reset: str = "\u001b[0m"
+  White: str = "\u001b[37m"
+  
+# class Level(Enum):
+@dataclass
+class Level:
+  Trace: str = "Trace"
+  Debug: str = "Debug"
+  Info: str  = "Info "
+  Warn: str  = "Warn "
+  Error: str = "Error"
 
 class Logger:
   def __init__(self, level=LogLevel.Info):
@@ -40,32 +54,32 @@ class Logger:
     self.level = level
 
   def Trace(self, msg: str):
-    if self.level.value <= LogLevel.Trace.value:
-      t_stamp = self.__TimeStamp()
-      print(f"{Color.Bold.value}[{t_stamp}] [{Color.Trace.value}Trace{Color.White.value}] {Color.Reset.value}{msg}")
+    if self.level <= LogLevel.Trace:
+      print(self.GenerateSring(msg, Level.Trace, Color.Trace))
 
   def Debug(self, msg: str):
-    if self.level.value <= LogLevel.Debug.value:
-      t_stamp = self.__TimeStamp()
-      print(f"{Color.Bold.value}[{t_stamp}] [{Color.Debug.value}Debug{Color.White.value}] {Color.Reset.value}{msg}")
+    if self.level <= LogLevel.Debug:
+      print(self.GenerateSring(msg, Level.Debug, Color.Debug))
 
   def Info(self, msg: str):
-    if self.level.value <= LogLevel.Info.value:
-      t_stamp = self.__TimeStamp()
-      print(f"{Color.Bold.value}[{t_stamp}] [{Color.Info.value}Info{Color.White.value} ] {Color.Reset.value}{msg}")
+    if self.level <= LogLevel.Info:
+      print(self.GenerateSring(msg, Level.Info, Color.Info))
 
   def Warn(self, msg: str):
-    if self.level.value <= LogLevel.Warn.value:
-      t_stamp = self.__TimeStamp()
-      print(f"{Color.Bold.value}[{t_stamp}] [{Color.Warn.value}Warn{Color.White.value} ] {Color.Reset.value}{msg}")
+    if self.level <= LogLevel.Warn:
+      print(self.GenerateSring(msg, Level.Warn, Color.Warn))
 
   def Error(self, msg: str):
-    if self.level.value <= LogLevel.Error.value:
-      t_stamp = self.__TimeStamp()
-      print(f"{Color.Bold.value}[{t_stamp}] [{Color.Error.value}Error{Color.White.value}] {Color.Reset.value}{msg}")
+    if self.level <= LogLevel.Error:
+      print(self.GenerateSring(msg, Level.Error, Color.Error))
+      
+  def GenerateSring(self, msg: str, level: Level, color: Color):
+    t_stamp = self.__TimeStamp()
+    return f"{Color.Bold}[{t_stamp}] [{color}{level}{Color.White}] {Color.Reset}{msg}"
+    
 
   def __TimeStamp(self):
-    return datetime.datetime.now().strftime('%F %T.%f')[:-3]
+    return datetime.now().strftime('%F %T.%f')[:-3]
 
 
 default_logger = Logger()
