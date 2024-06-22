@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "log-utils"
+name = "logutils"
 version = "0.0.1"
 description = "Simple logging and timer utilities."
 authors = ["Daniel Sturdivant <sturdivant20@gmail.com>"]
@@ -7,7 +7,7 @@ license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 
 
 [build-system]
