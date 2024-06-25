@@ -12,7 +12,7 @@
 #                                                                                                  #
 # ==================================================================================================#
 
-from log_utils.logger import default_logger
+from logutils.logger import default_logger
 import time
 
 time_scales = {"ns": 1e9, "µs": 1e6, "ms": 1e3, "s": 1.0, "min": 1.0 / 60.0, "hr": 1.0 / 3.6e3, "dy": 1.0 / 86.5e3}
